@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -20,6 +19,17 @@
     function testarExcecao() {
 
         var valorInformado = $('#txtvalor').val();
+
+        /*Ajax do jQuery*/
+        $.ajax({
+            method: "POST", /*GET,POST,DELETE*/
+            url: "capturarExecao", // para qual servlet?
+            data: { valorParam: valorInformado} // Capturando do formulario
+
+        }).always(function (response) { //sempre captar o retorno (sucesso ou falha)
+            alert(response);// Resposta do ajax na variavel response
+        })
+
 
     }
 
