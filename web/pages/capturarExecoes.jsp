@@ -24,11 +24,15 @@
         $.ajax({
             method: "POST", /*GET,POST,DELETE*/
             url: "capturarExecao", // para qual servlet?
-            data: { valorParam: valorInformado} // Capturando do formulario
+            data: {valorParam: valorInformado} // Capturando do formulario
 
-        }).always(function (response) { //sempre captar o retorno (sucesso ou falha)
-            alert(response);// Resposta do ajax na variavel response
-        })
+        }).done(function (response) { //resposta ok- nenhum erro
+            alert("Sucesso, " +response);// Resposta do ajax na variavel response
+            //Fazer algo se deu certo
+        }).fail(function (xhr, status, errorThrown) { // xhr --> objeto com vários atributos
+            alert("Error, "+ xhr.responseText);//mostras resposta do servidor
+            //Fazer algo se deu errado
+        });
 
 
     }
