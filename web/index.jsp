@@ -7,19 +7,25 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>Recursos avançados em Java</title>
-  </head>
-  <body>
-    <h3>Recursos avançados em Java</h3>
+</head>
+<body>
+<h3>Recursos avançados em Java</h3>
 
-  <table>
+<table>
     <tr>
-      <td><a href="pages/capturarExecoes.jsp">Capturar exeções</a></td>
+        <td><a href="pages/capturarExecoes.jsp">Capturar exeções</a></td>
     </tr>
-  </table>
+    <tr>
+        <td><a href="pages/acessoSistema.jsp">Acessar o sistema</a></td>
+    </tr>
+    <tr>
+        <%--Passando por get, ou seja, por url--%>
+        <td><a href="pages/UsuarioServlet?deslogar=true">Deslogar</a></td>
+    </tr>
+</table>
 
 
-
-  </body>
+</body>
 </html>
