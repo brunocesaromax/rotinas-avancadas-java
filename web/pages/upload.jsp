@@ -26,12 +26,9 @@
         var file = document.querySelector("input[type=file]").files[0]; // Pegando o input
         var reader = new FileReader();
 
+        /*Executado por último*/
         reader.onloadend = function () {
             target.src = reader.result; // mostrando a imagem
-        };
-
-        if (file) {
-            reader.readAsDataURL(file);
 
             /// ---------Upload ajax do jQuery--------
             $.ajax({
@@ -40,13 +37,17 @@
                 data: {fileUpload: target.src} //dado obtido em JSON
 
             }).done(function (response) {
-                alert("Sucesso:" + response);
+                alert("Sucesso: " + response);
 
             }).fail(function (xhr, status, errorThrown) {
                 alert("Error: " + xhr.responseText);
             });
 
             /////////////////////
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
 
         } else {
             target.src = "";
