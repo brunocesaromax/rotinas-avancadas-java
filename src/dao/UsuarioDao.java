@@ -3,9 +3,13 @@ package dao;
 import connection.SingleConnection;
 import model.Usuario;
 
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDao {
 
@@ -40,6 +44,26 @@ public class UsuarioDao {
 
     }
 
+    public List<Usuario> listar() throws SQLException {
+
+        List<Usuario> usuarios = new ArrayList<>();
+
+            String sql = "select * from usuario";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()){
+                Usuario usuario = new Usuario();
+                usuario.setId(result.getLong("id"));
+                usuario.setLogin(result.getString("login"));
+                usuario.setSenha(result.getString("senha"));
+                usuario.setImagem(result.getString("imagem"));
+
+                usuarios.add(usuario);
+            }
+
+            return usuarios;
+    }
 
     public void gravarImagem(String imagem) {
 
