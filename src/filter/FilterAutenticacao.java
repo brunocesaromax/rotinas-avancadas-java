@@ -13,11 +13,12 @@ import java.io.IOException;
 // Com essa anotação não precisa declarar arquivo no web.xml da aplicação
 public class FilterAutenticacao implements Filter {
 
+   // private static Connection connection;
 
     //Executa algo quando a aplicação é iniciada
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+     //   connection = SingleConnection.getConnection();
     }
 
     //Intercepta todas as requisições
@@ -36,7 +37,7 @@ public class FilterAutenticacao implements Filter {
 
         if (usuarioLogado == null && !urlParaAutenticacao.equalsIgnoreCase("/pages/UsuarioServlet")) { // Usuário não logado
             //Redirecionamento em java
-            RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/pages/login.jsp?url="+urlParaAutenticacao);
+            RequestDispatcher dispatcher = servletRequest.getRequestDispatcher("/pages/login.jsp?url=" + urlParaAutenticacao);
             dispatcher.forward(servletRequest, servletResponse);
             return; // Para o processo redirecionar
         }
