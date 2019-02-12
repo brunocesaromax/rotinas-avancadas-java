@@ -23,16 +23,18 @@
 <br/>
 <br/>
 
-<a href="fileUpload">Carregar imagem</a>
+<a href="fileUpload?acao=carregar">Carregar imagem</a>
 
 <br/>
+
 <table>
 
     <c:forEach items="${listaUserImagem}" var="user">
         <tr>
             <td>${user.id}</td>
             <td>${user.login}</td>
-            <td>${user.imagem}</td>
+                <%--Capturando o tipo de acao que o parametro acao ira fazer e baixar a imagem pelo id do usuario--%>
+            <td><a target="_blank" href="fileUpload?acao=download&idUser=${user.id}">Download imagem</a></td>
         </tr>
 
     </c:forEach>

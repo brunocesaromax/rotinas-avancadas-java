@@ -3,7 +3,6 @@ package dao;
 import connection.SingleConnection;
 import model.Usuario;
 
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -48,21 +47,21 @@ public class UsuarioDao {
 
         List<Usuario> usuarios = new ArrayList<>();
 
-            String sql = "select * from usuario";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet result = statement.executeQuery();
+        String sql = "select * from usuario";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
 
-            while (result.next()){
-                Usuario usuario = new Usuario();
-                usuario.setId(result.getLong("id"));
-                usuario.setLogin(result.getString("login"));
-                usuario.setSenha(result.getString("senha"));
-                usuario.setImagem(result.getString("imagem"));
+        while (result.next()) {
+            Usuario usuario = new Usuario();
+            usuario.setId(result.getLong("id"));
+            usuario.setLogin(result.getString("login"));
+            usuario.setSenha(result.getString("senha"));
+            usuario.setImagem(result.getString("imagem"));
 
-                usuarios.add(usuario);
-            }
+            usuarios.add(usuario);
+        }
 
-            return usuarios;
+        return usuarios;
     }
 
     public void gravarImagem(String imagem) {
@@ -87,5 +86,25 @@ public class UsuarioDao {
 
         }
 
+    }
+
+    public String getImagem(Long idUsuario) {
+
+        try {
+            String sql = "select imagem from usuario where id = ?";
+            PreparedStatement statement = null;
+            statement = connection.prepareStatement(sql);
+            statement.setLong(1, idUsuario);
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                return result.getString("imagem");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
