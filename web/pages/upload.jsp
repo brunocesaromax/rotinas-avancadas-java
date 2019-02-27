@@ -34,7 +34,7 @@
             <td>${user.id}</td>
             <td>${user.login}</td>
                 <%--Capturando o tipo de acao que o parametro acao ira fazer e baixar a imagem pelo id do usuario--%>
-            <td><a target="_blank" href="fileUpload?acao=download&idUser=${user.id}">Download imagem</a></td>
+            <td><a target="_blank" href="fileUpload?acao=download&idUser=${user.id}">Download arquivo</a></td>
         </tr>
 
     </c:forEach>

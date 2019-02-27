@@ -1,6 +1,7 @@
 package servlets;
 
 import dao.UsuarioDao;
+import model.Usuario;
 import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.servlet.RequestDispatcher;
@@ -55,10 +56,13 @@ public class FileUploadServlet extends HttpServlet {
         } else if (acao.equalsIgnoreCase("download")) {
 
             String idUser = request.getParameter("idUser");
-            String imagem = usuarioDao.getImagem(Long.valueOf(idUser));
+            Usuario usuario = usuarioDao.getUsuario(Long.valueOf(idUser));
+            String imagem = usuario.getImagem();
 
             /*Tutorial para pegar a imagem do banco e trazer para o navegador*/
             if (imagem != null){
+
+                response.setHeader("Content-Disposition","attachment;filename=file."+ usuario.getTipofile());
 
                 /*Pega somente imagem pura, sem metadados*/
                 String imagemPura = imagem.split(",")[1];

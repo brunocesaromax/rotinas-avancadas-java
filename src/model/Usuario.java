@@ -6,6 +6,7 @@ public class Usuario {
     private String login;
     private String senha;
     private String imagem;
+    private String tipofile;
 
     public Long getId() {
         return id;
@@ -37,5 +38,13 @@ public class Usuario {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String getTipofile() {
+        return tipofile;
+    }
+
+    public void setTipofile(String tipofile) {
+        this.tipofile = tipofile;
     }
 }
