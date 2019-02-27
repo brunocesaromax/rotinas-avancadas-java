@@ -13,12 +13,12 @@ import java.io.IOException;
 // Com essa anotação não precisa declarar arquivo no web.xml da aplicação
 public class FilterAutenticacao implements Filter {
 
-   // private static Connection connection;
+    //private static Connection connection;
 
     //Executa algo quando a aplicação é iniciada
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-     //   connection = SingleConnection.getConnection();
+        //connection = SingleConnection.getConnection();
     }
 
     //Intercepta todas as requisições

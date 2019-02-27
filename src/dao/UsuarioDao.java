@@ -57,6 +57,7 @@ public class UsuarioDao {
             usuario.setLogin(result.getString("login"));
             usuario.setSenha(result.getString("senha"));
             usuario.setImagem(result.getString("imagem"));
+            usuario.setTipofile(result.getString("tipofile"));
 
             usuarios.add(usuario);
         }

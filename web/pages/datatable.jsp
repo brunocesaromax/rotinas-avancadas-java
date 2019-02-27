@@ -21,12 +21,9 @@
 <table id="minhaTabela" class="display" style="width:100%">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Office</th>
-        <th>Age</th>
-        <th>Start date</th>
-        <th>Salary</th>
+        <th>Id</th>
+        <th>login</th>
+        <th>TipoFile</th>
     </tr>
     </thead>
     <tbody>
