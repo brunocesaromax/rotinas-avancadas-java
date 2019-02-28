@@ -1,6 +1,6 @@
 package servlets;
 
-import dao.UsuarioDao;
+import dao.PrimaryUsuarioDao;
 import model.Usuario;
 import org.apache.tomcat.util.codec.binary.Base64;
 
@@ -19,7 +19,7 @@ import java.sql.SQLException;
 @WebServlet("/pages/fileUpload")
 public class FileUploadServlet extends HttpServlet {
 
-    private UsuarioDao usuarioDao = new UsuarioDao();
+    private PrimaryUsuarioDao primaryUsuarioDao = new PrimaryUsuarioDao();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,7 +27,7 @@ public class FileUploadServlet extends HttpServlet {
             //Usar essa variável para salvar no BD
             String fileUpload = request.getParameter("fileUpload");
 
-            usuarioDao.gravarImagem(fileUpload);
+            primaryUsuarioDao.gravarImagem(fileUpload);
 
             response.getWriter().write("Upload realizado com sucesso!");
 
@@ -46,7 +46,7 @@ public class FileUploadServlet extends HttpServlet {
             //Redirecionamento
             RequestDispatcher view = request.getRequestDispatcher("upload.jsp");
             try {
-                request.setAttribute("listaUserImagem", usuarioDao.listar());
+                request.setAttribute("listaUserImagem", primaryUsuarioDao.listar());
                 view.forward(request, response);
 
             } catch (SQLException e) {
@@ -56,7 +56,7 @@ public class FileUploadServlet extends HttpServlet {
         } else if (acao.equalsIgnoreCase("download")) {
 
             String idUser = request.getParameter("idUser");
-            Usuario usuario = usuarioDao.getUsuario(Long.valueOf(idUser));
+            Usuario usuario = primaryUsuarioDao.getUsuario(Long.valueOf(idUser));
             String imagem = usuario.getImagem();
 
             /*Tutorial para pegar a imagem do banco e trazer para o navegador*/

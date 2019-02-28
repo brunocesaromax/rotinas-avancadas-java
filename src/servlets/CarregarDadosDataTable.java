@@ -1,6 +1,7 @@
 package servlets;
 
-import dao.UsuarioDao;
+import dao.PrimaryUsuarioDao;
+import dao.UsuarioDaoMySql;
 import model.Usuario;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,8 @@ import java.util.List;
 @WebServlet("/pages/carregarDadosDataTable")
 public class CarregarDadosDataTable extends HttpServlet {
 
-    private UsuarioDao usuarioDao = new UsuarioDao();
+    private PrimaryUsuarioDao primaryUsuarioDao = new PrimaryUsuarioDao();
+    private UsuarioDaoMySql usuarioDaoMySql = new UsuarioDaoMySql();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,7 +27,8 @@ public class CarregarDadosDataTable extends HttpServlet {
 
         try {
 
-            List<Usuario> usuarios = usuarioDao.listar();
+            List<Usuario> usuarios = primaryUsuarioDao.listar();
+            //List<Usuario> usuarios = usuarioDaoMySql.listar();
             String dados = "";
             int contador = 1;
 

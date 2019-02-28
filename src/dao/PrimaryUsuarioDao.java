@@ -1,6 +1,6 @@
 package dao;
 
-import connection.SingleConnection;
+import connection.SingleConnectionPrimaryBD;
 import model.Usuario;
 
 import java.sql.Connection;
@@ -10,12 +10,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsuarioDao {
+public class PrimaryUsuarioDao {
 
     private Connection connection;
 
-    public UsuarioDao() {
-        connection = SingleConnection.getConnection();
+    public PrimaryUsuarioDao() {
+        connection = SingleConnectionPrimaryBD.getConnection();
     }
 
     public void salvar(Usuario usuario) {

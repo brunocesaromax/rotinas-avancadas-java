@@ -1,5 +1,8 @@
 package filter;
 
+import connection.SingleConnectionMySql;
+import connection.SingleConnectionPrimaryBD;
+import connection.SingleConnectionSecondBD;
 import model.Usuario;
 
 import javax.servlet.*;
@@ -7,18 +10,26 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Connection;
 
 //Interceptação de urls
 @WebFilter(urlPatterns = {"/pages/*"})
 // Com essa anotação não precisa declarar arquivo no web.xml da aplicação
 public class FilterAutenticacao implements Filter {
 
-    //private static Connection connection;
+    private static Connection connectionPrimaryBD;
+    private static Connection connectionSecondBD;
+    private static Connection connectionMySql;
+
+
 
     //Executa algo quando a aplicação é iniciada
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        //connection = SingleConnection.getConnection();
+        connectionPrimaryBD = SingleConnectionPrimaryBD.getConnection();
+        connectionSecondBD = SingleConnectionSecondBD.getConnection();
+        connectionSecondBD = SingleConnectionMySql.getConnection();
+
     }
 
     //Intercepta todas as requisições

@@ -3,10 +3,10 @@ package connection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-/*Responsável pela conexão com o banco de dados*/
-public class SingleConnection {
+/*Responsável pela conexão com o banco de dados postgres*/
+public class SingleConnectionSecondBD {
 
-    private static String banco = "jdbc:postgresql://localhost:5432/java-rotinas-avancadas?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8";// Se banco cair ele irá se auto reconectar
+    private static String banco = "jdbc:postgresql://localhost:5432/aprendendo-jsp?autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8";// Se banco cair ele irá se auto reconectar
     private static String password = "postgres";
     private static String user = "postgres";
     private static Connection connection = null;
@@ -15,7 +15,7 @@ public class SingleConnection {
         conectar();
     }
 
-    public SingleConnection() {
+    public SingleConnectionSecondBD() {
         conectar();
     }
 
