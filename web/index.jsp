@@ -46,6 +46,10 @@
     </tr>
 
     <tr>
+        <td><a href="pages/ganttView.jsp">Gantt View</a></td>
+    </tr>
+
+    <tr>
         <%--Passando por get, ou seja, por url--%>
         <td><a href="pages/UsuarioServlet?deslogar=true">Deslogar</a></td>
     </tr>
